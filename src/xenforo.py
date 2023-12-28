@@ -33,7 +33,7 @@ def submit_text_post(forum, title, body):
 
 def edit_text_post(threadid, body):
 	try:
-		info(f"Editing post {threadid} in {forum}")
+		info(f"Editing post {threadid}")
 		thread = get_text_post(forum, threadid)
 		post_id = thread['thread']['first_post_id']
 		info("Submitting post to {}".format(forum))
