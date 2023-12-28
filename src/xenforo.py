@@ -32,7 +32,6 @@ def submit_text_post(forum, title, body):
 		return None
 
 def edit_text_post(threadid, body):
-	_ensure_connection()
 	try:
 		info(f"Editing post {threadid} in {forum}")
 		thread = get_text_post(forum, threadid)
