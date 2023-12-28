@@ -128,7 +128,6 @@ if __name__ == "__main__":
 	else:
 		logging.basicConfig(format="%(levelname)s | %(message)s", level=logging.DEBUG if c.debug else logging.INFO)
 	logging.getLogger("requests").setLevel(logging.WARNING)
-	logging.getLogger("praw-script-oauth").setLevel(logging.WARNING)
 
 	from logging import info, warning
 	from time import time

@@ -34,13 +34,13 @@ def main(config, db, show_name, episode_count):
 	megathread_title, megathread_body = _create_megathread_content(config, db, show, stream, episode_count)
 
 	if not config.debug:
-		megathread_post = xenforo.submit_text_post(config.subxenforo, megathread_title, megathread_body)
+		megathread_post = xenforo.submit_text_post(config.forum, megathread_title, megathread_body)
 	else:
                 megathread_post = None
 		
 	if megathread_post is not None:
 		debug("Post successful")
-		megathread_url = xenforo.get_shortlink_from_id(megathread_post.id).replace("http:", "https:")
+		megathread_url = megathread_post
 	else:
 		error("Failed to submit post")
 		megathread_url = None

@@ -10,7 +10,6 @@ Season configurations (show names and associated service URLs for each anime sea
 * `requests`
 * `feedparser`
 * `beautifulsoup4`
-* `praw-script-oauth`
 * `unidecode`
 * `pyyaml`
 
