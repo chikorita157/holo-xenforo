@@ -157,7 +157,7 @@ def _edit_xenforo_post(config, db, show, stream, episode, url, submit=True):
 	
 	_, body = _create_post_contents(config, db, show, stream, display_episode, quiet=True)
 	if submit:
-        print("Response: ",url)
+		print("Response: ",url)
 		tmpid = url.replace(config.xenforo_url + '/threads/"', "")
 		tmpid = url.replace("/", "")
 		threadid = literal_eval(tmpid)
