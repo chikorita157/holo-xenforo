@@ -7,7 +7,7 @@ from .. import AbstractInfoHandler
 
 class InfoHandler(AbstractInfoHandler):
 	_show_link_base = "/threads/{id}"
-	_show_link_matcher = "/threads/(\w+)"
+	_show_link_matcher = "https?:\/\/.*/threads/([0-9]+)"
 
 	def __init__(self):
 		super().__init__("xenforo", "xenforo")
