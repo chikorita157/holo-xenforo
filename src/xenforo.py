@@ -57,8 +57,7 @@ def edit_text_post(threadid, body):
 def get_text_post(threadid):
 	try:
 		newHeaders = {'Content-type': 'application/x-www-form-urlencoded', 'XF-Api-Key': _config.xenforo_api_key}
-		response = requests.post(_config.xenforo_url + '/api/threads/' + str(threadid) + '/',
-		 data={'node_id': forum, 'title': title, 'message' : body},
+		response = requests.get(_config.xenforo_url + '/api/threads/' + str(threadid) + '/',
 		 headers=newHeaders)
 		print("Status code: ", response.status_code)
 		if response.status_code == 200:
