@@ -53,8 +53,11 @@ def edit_text_post(threadid, body):
 			print("Response: ", response.json())
 			exception("Failed to edit the first post of the thread")
 			return None
-	except:
-		exception("Failed to edit the first post of the thread")
+	except requests.exceptions.HTTPError as err:
+		print(err.request.url)
+		print(err)
+		print(err.response.text)
+		#exception("Failed to edit the first post of the thread")
 		return None
 
 def get_text_post(threadid):
