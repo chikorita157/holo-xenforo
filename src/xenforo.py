@@ -42,7 +42,7 @@ def edit_text_post(threadid, body):
 		 data={'message' : body},
 		 headers=newHeaders)
 		print("Status code: ", response.status_code)
-        print("Thread: ", thread)
+		print("Thread: ", thread)
 		if response.status_code == 200:
 			responsedata = response.json()
 			thread = responsedata['thread']
