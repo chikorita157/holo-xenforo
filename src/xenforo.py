@@ -35,7 +35,6 @@ def edit_text_post(threadid, body):
 	try:
 		info(f"Editing post {threadid}")
 		thread = get_text_post(threadid)
-		data={'thread:' : thread},
 		post_id = thread['thread']['first_post_id']
 		print("Editing post: ", post_id)
 		newHeaders = {'Content-type': 'application/x-www-form-urlencoded', 'XF-Api-Key': _config.xenforo_api_key}
@@ -43,6 +42,7 @@ def edit_text_post(threadid, body):
 		 data={'message' : body},
 		 headers=newHeaders)
 		print("Status code: ", response.status_code)
+        print("Thread: ", thread)
 		if response.status_code == 200:
 			responsedata = response.json()
 			thread = responsedata['thread']
