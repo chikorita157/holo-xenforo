@@ -6,11 +6,11 @@ import re
 from .. import AbstractInfoHandler
 
 class InfoHandler(AbstractInfoHandler):
-	_show_link_base = "/r/{id}"
-	_show_link_matcher = "/r/(\w+)"
+	_show_link_base = "/forums/{id}"
+	_show_link_matcher = "/forums/(\w+)"
 
 	def __init__(self):
-		super().__init__("subreddit", "/r/")
+		super().__init__("forum", "/forum/")
 
 	def get_link(self, link):
 		if link is None:

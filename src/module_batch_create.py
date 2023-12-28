@@ -3,13 +3,13 @@ from datetime import date, timedelta
 
 import services
 from data.models import Stream, Episode
-import reddit
+import xenforo
 
-from module_find_episodes import _create_reddit_post, _edit_reddit_post, _format_post_text
+from module_find_episodes import _create_xenforo_post, _edit_xenforo_post, _format_post_text
 
 def main(config, db, show_name, episode_count):
 	int_episode_count = int(episode_count)
-	reddit.init_reddit(config)
+	xenforo.init_xenforo(config)
 
 	show = db.get_show_by_name(show_name)
 	if not show:
@@ -19,7 +19,7 @@ def main(config, db, show_name, episode_count):
 	post_urls = list()
 	for i in range(1, int_episode_count+1):
 		int_episode = Episode(i, None, None, None)
-		post_url = _create_reddit_post(config, db, show, stream, int_episode, submit=not config.debug)
+		post_url = _create_xenforo_post(config, db, show, stream, int_episode, submit=not config.debug)
 		info("  Post URL: {}".format(post_url))
 		if post_url is not None:
 			post_url = post_url.replace("http:", "https:")
@@ -29,18 +29,18 @@ def main(config, db, show_name, episode_count):
 		post_urls.append(post_url)
 
 	for editing_episode in db.get_episodes(show):
-		_edit_reddit_post(config, db, show, stream, editing_episode, editing_episode.link, submit=not config.debug)
+		_edit_xenforo_post(config, db, show, stream, editing_episode, editing_episode.link, submit=not config.debug)
 
 	megathread_title, megathread_body = _create_megathread_content(config, db, show, stream, episode_count)
 
 	if not config.debug:
-		megathread_post = reddit.submit_text_post(config.subreddit, megathread_title, megathread_body)
+		megathread_post = xenforo.submit_text_post(config.subxenforo, megathread_title, megathread_body)
 	else:
                 megathread_post = None
 		
 	if megathread_post is not None:
 		debug("Post successful")
-		megathread_url = reddit.get_shortlink_from_id(megathread_post.id).replace("http:", "https:")
+		megathread_url = xenforo.get_shortlink_from_id(megathread_post.id).replace("http:", "https:")
 	else:
 		error("Failed to submit post")
 		megathread_url = None

@@ -83,7 +83,7 @@ if __name__ == "__main__":
 	parser.add_argument("-m", "--module", dest="module", nargs=1, choices=["setup", "edit", "episode", "update", "find", "create", "batch"], default=["episode"], help="runs the specified module")
 	parser.add_argument("-c", "--config", dest="config_file", nargs=1, default=["config.ini"], help="use or create the specified database location")
 	parser.add_argument("-d", "--database", dest="db_name", nargs=1, default=None, help="use or create the specified database location")
-	parser.add_argument("-s", "--subreddit", dest="subreddit", nargs=1, default=None, help="set the subreddit on which to make posts")
+	parser.add_argument("-s", "--forum", dest="forum", nargs=1, default=None, help="set the forum id forwhich to make posts")
 	parser.add_argument("-o", "--output", dest="output", nargs=1, default="db", help="set the output mode (db or yaml) if supported")
 	parser.add_argument("-L", "--log-dir", dest="log_dir", nargs=1, default=["logs"], help="set the log directory")
 	parser.add_argument("-v", "--version", action="version", version="{} v{}, {}".format(name, version, description))
@@ -105,8 +105,8 @@ if __name__ == "__main__":
 	c.log_dir = args.log_dir[0]
 	if args.db_name is not None:
 		c.database = args.db_name[0]
-	if args.subreddit is not None:
-		c.subreddit = args.subreddit[0]
+	if args.forum is not None:
+		c.forum = args.forum[0]
 
 	# Start
 	use_log = args.no_input

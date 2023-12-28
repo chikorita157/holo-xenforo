@@ -14,11 +14,9 @@ class Config:
 		self.useragent = None
 		self.ratelimit = 1.0
 		
-		self.subreddit = None
-		self.r_username = None
-		self.r_password = None
-		self.r_oauth_key = None
-		self.r_oauth_secret = None
+        self.forum = None
+		self.xenforo_url = None
+		self.xenforo_api_key = None
 		
 		self.services = dict()
 		
@@ -32,8 +30,6 @@ class Config:
 		self.post_title = None
 		self.post_title_with_en = None
 		self.post_title_postfix_final = None
-		self.post_flair_id = None
-		self.post_flair_text = None
 		self.post_body = None
 		self.batch_thread_post_title = None
 		self.batch_thread_post_title_with_en = None
@@ -61,13 +57,11 @@ def from_file(file_path):
 		config.useragent = sec.get("useragent", None)
 		config.ratelimit = sec.getfloat("ratelimit", 1.0)
 	
-	if "reddit" in parsed:
-		sec = parsed["reddit"]
-		config.subreddit = sec.get("subreddit", None)
-		config.r_username = sec.get("username", None)
-		config.r_password = sec.get("password", None)
-		config.r_oauth_key = sec.get("oauth_key", None)
-		config.r_oauth_secret = sec.get("oauth_secret", None)
+	if "xenforo" in parsed:
+		sec = parsed["xenforo"]
+		config.forum = sec.get("forum", None)
+		config.xenforo_url = sec.get("xenforo_url", None)
+		config.xenforo_api_key = sec.get("xenforo_api_key", None)
 	
 	if "options" in parsed:
 		sec = parsed["options"]
@@ -87,8 +81,6 @@ def from_file(file_path):
 		config.post_title = sec.get("title", None)
 		config.post_title_with_en = sec.get("title_with_en", None)
 		config.post_title_postfix_final = sec.get("title_postfix_final", None)
-		config.post_flair_id = sec.get("flair_id", None)
-		config.post_flair_text = sec.get("flair_text", None)
 		config.post_body = sec.get("body", None)
 		config.post_poll_title = sec.get("poll_title", None)
 		config.batch_thread_post_title = sec.get("batch_thread_title", None)
@@ -117,16 +109,12 @@ def validate(config):
 	if config.ratelimit < 0:
 		warning("Rate limit can't be negative, defaulting to 1.0")
 		config.ratelimit = 1.0
-	if is_bad_str(config.subreddit):
-		return "subreddit missing"
-	if is_bad_str(config.r_username):
-		return "reddit username missing"
-	if is_bad_str(config.r_password):
-		return "reddit password missing"
-	if is_bad_str(config.r_oauth_key):
-		return "reddit oauth key missing"
-	if is_bad_str(config.r_oauth_secret):
-		return "reddit oauth secret missing"
+	if config.forum == 0:
+		return "invalid forum id or missing"
+	if is_bad_str(config.xenforo_url):
+		return "missing xenforo url"
+	if is_bad_str(config.xenforo_url):
+		return "missing xenforo api key"
 	if is_bad_str(config.post_title):
 		return "post title missing"
 	if is_bad_str(config.post_body):
