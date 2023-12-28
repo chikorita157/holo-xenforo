@@ -38,11 +38,10 @@ def edit_text_post(threadid, body):
 		post_id = thread['thread']['first_post_id']
 		print("Editing post: ", post_id)
 		newHeaders = {'Content-type': 'application/x-www-form-urlencoded', 'XF-Api-Key': _config.xenforo_api_key}
-		response = requests.post(_config.xenforo_url + '/posts/' + str(post_id) + '/',
+		response = requests.post(_config.xenforo_url + '/api/posts/' + str(post_id) + '/',
 		 data={'message' : body},
 		 headers=newHeaders)
 		print("Status code: ", response.status_code)
-		print("response: ", response.text)
 		if response.status_code == 200:
 			responsedata = response.json()
 			thread = responsedata['thread']
