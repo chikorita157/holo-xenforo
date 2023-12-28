@@ -36,6 +36,7 @@ def edit_text_post(threadid, body):
 		info(f"Editing post {threadid}")
 		thread = get_text_post(threadid)
 		post_id = thread['thread']['first_post_id']
+		print("Editing post: ", post_id)
 		newHeaders = {'Content-type': 'application/x-www-form-urlencoded', 'XF-Api-Key': _config.xenforo_api_key}
 		response = requests.post(_config.xenforo_url + '/posts/' + str(post_id) + '/',
 		 data={'message' : body},
