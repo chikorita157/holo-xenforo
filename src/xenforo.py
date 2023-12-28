@@ -44,8 +44,7 @@ def edit_text_post(threadid, body):
 		print("Status code: ", response.status_code)
 		if response.status_code == 200:
 			responsedata = response.json()
-			thread = responsedata['thread']
-			return _config.xenforo_url + '/threads/' + str(thread['thread_id'])
+			return _config.xenforo_url + '/threads/' + str(threadid)
    
 		elif response.status_code == 404:
 			print("Does not exist")
