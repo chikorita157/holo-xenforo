@@ -13,7 +13,6 @@ class Config:
 		self.database = None
 		self.useragent = None
 		self.ratelimit = 1.0
-        
         self.forum = None
         self.xenforo_url = None
         self.xenforo_api_key = None
