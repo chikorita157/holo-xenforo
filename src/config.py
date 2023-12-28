@@ -81,7 +81,6 @@ def from_file(file_path):
         config.post_title_with_en = sec.get("title_with_en", None)
         config.post_title_postfix_final = sec.get("title_postfix_final", None)
         config.post_body = sec.get("body", None)
-        config.post_poll_title = sec.get("poll_title", None)
         config.batch_thread_post_title = sec.get("batch_thread_title", None)
         config.batch_thread_post_title_with_en = sec.get("batch_thread_title_with_en", None)
         config.batch_thread_post_body = sec.get("batch_thread_body", None)
