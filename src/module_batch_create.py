@@ -22,7 +22,6 @@ def main(config, db, show_name, episode_count):
 		post_url = _create_xenforo_post(config, db, show, stream, int_episode, submit=not config.debug)
 		info("  Post URL: {}".format(post_url))
 		if post_url is not None:
-			post_url = post_url.replace("http:", "https:")
 			db.add_episode(show, int_episode.number, post_url)
 		else:
 			error("  Episode not submitted")
