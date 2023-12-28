@@ -22,7 +22,7 @@ def submit_text_post(forum, title, body):
 		if response.status_code == 200:
 			responsedata = response.json()
 			thread = responsedata['thread']
-			return _config.xenforo_url + '/threads/' + thread['thread_id']
+			return _config.xenforo_url + '/threads/' + str(thread['thread_id'])
 		else:
 			print("Response: ", response.json())
 			exception("Failed to create thread")
@@ -39,14 +39,14 @@ def edit_text_post(threadid, body):
 		post_id = thread['thread']['first_post_id']
 		info("Submitting post to {}".format(forum))
 		newHeaders = {'Content-type': 'application/x-www-form-urlencoded', 'XF-Api-Key': _config.xenforo_api_key}
-		response = requests.post(_config.xenforo_url + ' posts/' + post_id + '/',
+		response = requests.post(_config.xenforo_url + ' posts/' + str(post_id) + '/',
 		 data={'node_id': forum, 'title': title, 'message' : body},
 		 headers=newHeaders)
 		print("Status code: ", response.status_code)
 		if response.status_code == 200:
 			responsedata = response.json()
 			thread = responsedata['thread']
-			return _config.xenforo_url + '/threads/' + thread['thread_id']
+			return _config.xenforo_url + '/threads/' + str(thread['thread_id'])
 		else:
 			print("Response: ", response.json())
 			exception("Failed to edit the first post of the thread")
@@ -58,7 +58,7 @@ def edit_text_post(threadid, body):
 def get_text_post(threadid):
 	try:
 		newHeaders = {'Content-type': 'application/x-www-form-urlencoded', 'XF-Api-Key': _config.xenforo_api_key}
-		response = requests.post(_config.xenforo_url + '/api/threads/' + threadid + threadid + '/',
+		response = requests.post(_config.xenforo_url + '/api/threads/' + str(threadid) + '/',
 		 data={'node_id': forum, 'title': title, 'message' : body},
 		 headers=newHeaders)
 		print("Status code: ", response.status_code)
@@ -75,4 +75,4 @@ def get_text_post(threadid):
 # Utilities
 
 def get_shortlink_from_id(threadid):
-	return _config.xenforo_url + '/threads/' + threadid
+	return _config.xenforo_url + '/threads/' + str(threadid)
