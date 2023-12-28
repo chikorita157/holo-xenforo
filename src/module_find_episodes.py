@@ -54,7 +54,7 @@ def main(config, db, **kwargs):
 		try:
 			service_handler = services.get_service_handler(service)
 			if service_handler.is_generic:
-				debug("    Checking service {}".format(service_handler.name))
+				debug("	Checking service {}".format(service_handler.name))
 				recent_episodes = service_handler.get_recent_episodes(other_streams, useragent=config.useragent)
 				info(f"{len(recent_episodes)} episodes for active shows on generic service {service}")
 
@@ -156,9 +156,9 @@ def _edit_xenforo_post(config, db, show, stream, episode, url, submit=True):
 	
 	_, body = _create_post_contents(config, db, show, stream, display_episode, quiet=True)
 	if submit:
-        tmpid = url.replace(config.xenforo_url + '/threads/"', "")
-        tmpid = url.replace("/", "")
-        threadid = literal_eval(tmpid)
+		tmpid = url.replace(config.xenforo_url + '/threads/"', "")
+		tmpid = url.replace("/", "")
+		threadid = literal_eval(tmpid)
 		xenforo.edit_text_post(threadid, body)
 	return None
 

@@ -12,7 +12,7 @@ def init_xenforo(config):
 # Thing doing
 
 def submit_text_post(forum, title, body):
-	try:              
+	try:  			
 		info("Submitting post to {}".format(forum))
 		newHeaders = {'Content-type': 'application/x-www-form-urlencoded', 'XF-Api-Key': _config.xenforo_api_key}
 		response = requests.post(_config.xenforo_url + '/api/threads/',
@@ -20,9 +20,9 @@ def submit_text_post(forum, title, body):
 		 headers=newHeaders)
 		print("Status code: ", response.status_code)
 		if response.status_code == 200:
-            responsedata = response.json()
-            thread = responsedata['thread']
-            return _config.xenforo_url + '/threads/' + thread['thread_id']
+			responsedata = response.json()
+			thread = responsedata['thread']
+			return _config.xenforo_url + '/threads/' + thread['thread_id']
 		else:
 			exception("Failed to create thread)
 			return None
@@ -43,8 +43,8 @@ def edit_text_post(threadid, body):
 		 headers=newHeaders)
 		print("Status code: ", response.status_code)
 		if response.status_code == 200:
-            responsedata = response.json()
-            thread = responsedata['thread']
+			responsedata = response.json()
+			thread = responsedata['thread']
 			return _config.xenforo_url + '/threads/' + thread['thread_id']
 		else:
 			exception("Failed to edit the first post of the thread")
