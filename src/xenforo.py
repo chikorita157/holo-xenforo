@@ -45,6 +45,10 @@ def edit_text_post(threadid, body):
 			responsedata = response.json()
 			thread = responsedata['thread']
 			return _config.xenforo_url + '/threads/' + str(thread['thread_id'])
+   
+		elif response.status_code == 404:
+			print("Does not exist")
+			return None:
 		else:
 			print("Response: ", response.json())
 			exception("Failed to edit the first post of the thread")
@@ -61,6 +65,9 @@ def get_text_post(threadid):
 		print("Status code: ", response.status_code)
 		if response.status_code == 200:
 			return response.json()
+		elif response.status_code == 404:
+			print("Does not exist")
+			return None:
 		else:
 			print("Response: ", response.json())
 			exception("Failed to retrieve thread informationt")
