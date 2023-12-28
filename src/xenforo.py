@@ -24,7 +24,8 @@ def submit_text_post(forum, title, body):
 			thread = responsedata['thread']
 			return _config.xenforo_url + '/threads/' + thread['thread_id']
 		else:
-			exception("Failed to create thread)
+			print("Response: ", response.json())
+			exception("Failed to create thread")
 			return None
 	except:
 		exception("Failed to create threead")
@@ -47,6 +48,7 @@ def edit_text_post(threadid, body):
 			thread = responsedata['thread']
 			return _config.xenforo_url + '/threads/' + thread['thread_id']
 		else:
+			print("Response: ", response.json())
 			exception("Failed to edit the first post of the thread")
 			return None
 	except:
@@ -62,7 +64,8 @@ def get_text_post(threadid):
 		print("Status code: ", response.status_code)
 		if response.status_code == 200:
 			return response.json()
-		else: 
+		else:
+			print("Response: ", response.json())
 			exception("Failed to retrieve thread informationt")
 			return None
 	except:
