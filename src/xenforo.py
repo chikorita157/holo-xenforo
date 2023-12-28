@@ -48,7 +48,7 @@ def edit_text_post(threadid, body):
    
 		elif response.status_code == 404:
 			print("Does not exist")
-			return None:
+			return None
 		else:
 			print("Response: ", response.json())
 			exception("Failed to edit the first post of the thread")
@@ -67,7 +67,7 @@ def get_text_post(threadid):
 			return response.json()
 		elif response.status_code == 404:
 			print("Does not exist")
-			return None:
+			return None
 		else:
 			print("Response: ", response.json())
 			exception("Failed to retrieve thread informationt")
