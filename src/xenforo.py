@@ -39,7 +39,7 @@ def edit_text_post(threadid, body):
 		print("Editing post: ", post_id)
 		newHeaders = {'Content-type': 'application/x-www-form-urlencoded', 'XF-Api-Key': _config.xenforo_api_key}
 		response = requests.post(_config.xenforo_url + '/api/posts/' + str(post_id) + '/',
-		 data={'message' : body},
+		 data={'message' : body, 'silent' : True, 'clear_edit' : True},
 		 headers=newHeaders)
 		print("Status code: ", response.status_code)
 		if response.status_code == 200:
