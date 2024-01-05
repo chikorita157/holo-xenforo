@@ -17,12 +17,13 @@ Season configurations (show names and associated service URLs for each anime sea
 * Partitioned into multiple self-contained runnable modules
 * Runs once and exits to play nice with schedulers
 * Source sites (Crunchyroll, Funimation, Nyaa) are self-contained with a common interface
+* Adds support to share the newly created discussion link to Misskey/Sharkey (ActivityPub software compatible with other Fediverse software like Mastodon)
 
 ### Modules
 
 Name|Run freq|Command
 :--|:-:|:--
-Find new episodes|high|python holo.py -s [subreddit]
+Find new episodes|high|python holo.py
 Update shows|med|python holo.py -m update
 Find new show|low (or manual)|python holo.py -m find
 Edit shows|manual|python holo.py -m edit [show-config]
