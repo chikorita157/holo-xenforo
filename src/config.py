@@ -102,7 +102,7 @@ def from_file(file_path):
 		sec = parsed["misskey"]
 		config.misskey_api_key = sec.get("misskey_api_key", None)
 		config.misskey_instance_url = sec.get("misskey_instance_url", None)
-
+	return config
 def validate(config):
 	def is_bad_str(s):
 		return s is None or len(s) == 0
