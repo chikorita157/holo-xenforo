@@ -83,7 +83,7 @@ def get_text_post(threadid):
 		exception("Failed to retrieve thead inforrmation")
 		return None
 
-def share_thread_url_to_misskey(title, url);
+def share_thread_url_to_misskey(title, url):
 	try:
 		info("Sharing link on Misskey for {}".format(title))
 		newHeaders = {'Content-type': 'application/json', 'Authorization': _config.misskey_api_key}
