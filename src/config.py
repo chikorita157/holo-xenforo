@@ -98,7 +98,7 @@ def from_file(file_path):
 			config.services[service] = parsed[key]
 	
 	# Misskey
-	if "xenforo" in parsed:
+	if "misskey" in parsed:
 		sec = parsed["misskey"]
 		config.misskey_api_key = sec.get("misskey_api_key", None)
 		config.misskey_instance_url = sec.get("misskey_instance_url", None)
