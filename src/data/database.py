@@ -127,7 +127,6 @@ class DatabaseDatabase:
 			show		INTEGER NOT NULL,
 			episode		INTEGER NOT NULL,
 			wp_post_url	TEXT,
-						UNIQUE(show, episode) ON CONFLICT REPLACE,
 			post_url	TEXT,
 						UNIQUE(show, episode) ON CONFLICT REPLACE,
 			FOREIGN KEY(show) REFERENCES Shows(id)
