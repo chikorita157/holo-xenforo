@@ -15,7 +15,7 @@ def submit_text_post(title, body, tags):
     try:
         info("Submitting post to WordPress")
         newHeaders = {'Content-type': 'application/json'}
-        data = "{'title': " + title + ", 'content' :" + body + ", 'tags' : [" + tags + " , 'comment_status' : open, 'status' : 'publish'}"
+        data = "{'title': " + title + ", 'content' :" + body + ", 'tags' : [" + tags + "] , 'comment_status' : open, 'status' : 'publish'}"
         response = requests.post(_config.wordpress_url + '/wp-json/wp/v2/posts',
          json = data,
          headers=newHeaders, auth=(_config.wordpress_username, _config.wordpress_app_password))
