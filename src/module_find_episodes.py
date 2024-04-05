@@ -198,9 +198,9 @@ def _create_post_contents(config, db, show, stream, episode, wordpress=False, qu
 	else:
 		format = config.post_formats
 	title = _create_post_title(config, show, episode)
-	title = _format_post_text(config, db, title, config.format, show, episode, stream, wordpress)
+	title = _format_post_text(config, db, title, format, show, episode, stream, wordpress)
 	info("Title:\n"+title)
-	body = _format_post_text(config, db, config.post_body, config.format, show, episode, stream, wordpress)
+	body = _format_post_text(config, db, config.post_body, format, show, episode, stream, wordpress)
 	if not quiet: info("Body:\n"+body)
 	if wordpress:
 		if show.name_en:
