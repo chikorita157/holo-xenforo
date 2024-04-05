@@ -5,10 +5,11 @@ from ast import literal_eval
 import services
 from data.models import Stream
 import xenforo
+import wordpress
 
 def main(config, db, **kwargs):
 	xenforo.init_xenforo(config)
-	
+    wordpress.init_xenforo(config)
 	has_new_episode = []
 	
 	# Check services for new episodes
@@ -118,8 +119,10 @@ def _process_new_episode(config, db, show, stream, episode):
 		if not already_seen and not episode_number_gap:
 			post_url = _create_xenforo_post(config, db, show, stream, int_episode, submit=not config.debug)
 			info("  Post URL: {}".format(post_url))
+            wp_post_url = _create_wordpress_post(config, db, show, stream, int_episode, submit=not config.debug)
+            info("  Post URL: {}".format(post_url))
 			if post_url is not None:
-				db.add_episode(stream.show, int_episode.number, post_url)
+				db.add_episode(stream.show, int_episode.number, post_url, wp_post_url)
 				if show.delayed:
 					db.set_show_delayed(show, False)
 				# Edit the links in previous episodes
@@ -129,6 +132,7 @@ def _process_new_episode(config, db, show, stream, episode):
 					editing_episodes.sort(key=lambda x: x.number)
 					for editing_episode in editing_episodes[-edit_history_length:]:
 						_edit_xenforo_post(config, db, show, stream, editing_episode, editing_episode.link, submit=not config.debug)
+                        _edit_wordpress_post(config, db, show, stream, editing_episode, editing_episode.wp_post_link, submit=not config.debug)
 			else:
 				error("  Episode not submitted")
 			
@@ -141,7 +145,7 @@ def _process_new_episode(config, db, show, stream, episode):
 def _create_xenforo_post(config, db, show, stream, episode, submit=True):
 	display_episode = stream.to_display_episode(episode)
 	
-	title, body = _create_post_contents(config, db, show, stream, display_episode)
+	title, body = _create_post_contents(config, db, show, stream, display_episode, wordpress=False)
 	if submit:
 		new_post = xenforo.submit_text_post(config.forum, title, body)
 		if new_post is not None:
@@ -154,23 +158,54 @@ def _create_xenforo_post(config, db, show, stream, episode, submit=True):
 def _edit_xenforo_post(config, db, show, stream, episode, url, submit=True):
 	display_episode = stream.to_display_episode(episode)
 	
-	_, body = _create_post_contents(config, db, show, stream, display_episode, quiet=True)
+	_, body = _create_post_contents(config, db, show, stream, display_episode, wordpress=False, quiet=True)
 	if submit:
 		print("Response: ",url)
 		tmpid = url.replace(config.xenforo_url + '/threads/', "")
 		threadid = literal_eval(tmpid)
 		xenforo.edit_text_post(threadid, body)
 	return None
+ 
+def _create_wordpress_post(config, db, show, stream, episode, submit=True):
+    display_episode = stream.to_display_episode(episode)
+    
+    title, body = _create_post_contents(config, db, show, stream, display_episode wordpress=True)
+    if submit:
+        new_post = wordpress.submit_text_post(config.forum, title, body)
+        if new_post is not None:
+            debug("Post successful")
+            return new_post
+        else:
+            error("Failed to submit post")
+    return None
 
-def _create_post_contents(config, db, show, stream, episode, quiet=False):
+def _edit_wordpress_post(config, db, show, stream, episode, url, submit=True):
+    display_episode = stream.to_display_episode(episode)
+    
+    _, body = _create_post_contents(config, db, show, stream, display_episode, wordpress=True, quiet=True)
+    if submit:
+        print("Response: ",url)
+        tmpid = url.replace(config.wordpress_url + '?p=', "")
+        postid = literal_eval(tmpid)
+        wordpress.edit_text_post(postid, body)
+    return None
+
+
+def _create_post_contents(config, db, show, stream, episode, wordpress=False, quiet=False):
+    format = None
+    if wordpress:
+        format = config.wordpress_post_formats
+    else:
+        format = config.post_formats
 	title = _create_post_title(config, show, episode)
-	title = _format_post_text(config, db, title, config.post_formats, show, episode, stream)
+	title = _format_post_text(config, db, title, config.format, show, episode, stream, wordpress)
 	info("Title:\n"+title)
-	body = _format_post_text(config, db, config.post_body, config.post_formats, show, episode, stream)
+	body = _format_post_text(config, db, config.post_body, config.format, show, episode, stream, wordpress)
 	if not quiet: info("Body:\n"+body)
 	return title, body
+ 
 
-def _format_post_text(config, db, text, formats, show, episode, stream):
+def _format_post_text(config, db, text, formats, show, episode, stream, wordpress):
 	#TODO: change to a more block-based system (can exclude blocks without content)
 	if "{spoiler}" in text:
 		text = safe_format(text, spoiler=_gen_text_spoiler(formats, show))
@@ -179,7 +214,7 @@ def _format_post_text(config, db, text, formats, show, episode, stream):
 	if "{links}" in text:
 		text = safe_format(text, links=_gen_text_links(db, formats, show))
 	if "{discussions}" in text:
-		text = safe_format(text, discussions=_gen_text_discussions(db, formats, show, stream))
+		text = safe_format(text, discussions=_gen_text_discussions(db, formats, show, stream, wordpress))
 	if "{aliases}" in text:
 		text = safe_format(text, aliases=_gen_text_aliases(db, formats, show))
 	if "{poll}" in text:
@@ -251,7 +286,7 @@ def _gen_text_links(db, formats, show):
 
 	return "\n".join(link_texts) + '\n' + '\n'.join(link_texts_bottom)
 
-def _gen_text_discussions(db, formats, show, stream):
+def _gen_text_discussions(db, formats, show, stream, wordpress):
 	episodes = db.get_episodes(show)
 	debug("Num previous episodes: {}".format(len(episodes)))
 	N_LINES = 13
@@ -275,7 +310,12 @@ def _gen_text_discussions(db, formats, show, stream):
 				score = poll_handler.get_score(poll)
 				poll_link = poll_handler.get_results_link(poll)
 			score = poll_handler.convert_score_str(score)
-			table.append(safe_format(formats["discussion"], episode=episode.number, link=episode.link, score=score, poll_link=poll_link if poll_link else "http://localhost")) # Need valid link even when empty
+            discussion_link = None
+            if wordpress:
+                discussion_link = episode.wp_post_link
+            else:
+                discussion_link = episode.link
+			table.append(safe_format(formats["discussion"], episode=episode.number, link=discussion_link, score=score, poll_link=poll_link if poll_link else "http://localhost")) # Need valid link even when empty
 
 		num_columns = 1 + (len(table) - 1) // N_LINES
 		format_head, format_align = formats["discussion_header"], formats["discussion_align"]

@@ -35,6 +35,13 @@ class Config:
 		self.batch_thread_post_body = None
 		self.post_formats = dict()
 		
+		self.wordpress_url = None
+		self.wordpress_username = None
+		self.wordpress_app_password = None
+		self.wordpress_post_body = None
+		self.wordpress_batch_thread_post_body = None
+		self.wordpress_post_formats = dict()
+		
 		self.misskey_api_key = None
 		self.misskey_instance_url = None
 	
@@ -90,6 +97,18 @@ def from_file(file_path):
 		for key in sec:
 			if key.startswith("format_") and len(key) > 7:
 				config.post_formats[key[7:]] = sec[key]
+				
+	if "wordpress" in parsed:
+		sec = parsed["post"]
+		config.wordpress_url = sec.get("wordpress_url", None)
+		config.wordpress_username = sec.get("wordpress_username", None)
+		config.wordpress_app_password = sec.get("wordpress_app_password", None)
+		config.wordpress_post_body = sec.get("wordpress_body", None)
+		config.wordpress_batch_thread_post_body = sec.get("wordpress_batch_thread_body", None)
+		for key in sec:
+			if key.startswith("wordpress_format_") and len(key) > 7:
+				config.wordpress_post_formats[key[7:]] = sec[key]
+	
 	
 	# Services
 	for key in parsed:

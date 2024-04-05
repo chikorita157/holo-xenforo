@@ -128,6 +128,8 @@ class DatabaseDatabase:
 			episode		INTEGER NOT NULL,
 			post_url	TEXT,
                         UNIQUE(show, episode) ON CONFLICT REPLACE,
+            wP_post_url TEXT,
+                        UNIQUE(show, episode) ON CONFLICT REPLACE,
 			FOREIGN KEY(show) REFERENCES Shows(id)
 		)""")
 
@@ -599,24 +601,24 @@ class DatabaseDatabase:
 
 	@db_error_default(None)
 	def get_latest_episode(self, show: Show) -> Optional[Episode]:
-		self.q.execute("SELECT episode, post_url FROM Episodes WHERE show = ? ORDER BY episode DESC LIMIT 1", (show.id,))
+		self.q.execute("SELECT episode, post_url, wp_post_url FROM Episodes WHERE show = ? ORDER BY episode DESC LIMIT 1", (show.id,))
 		data = self.q.fetchone()
 		if data is not None:
 			return Episode(data[0], None, data[1], None)
 		return None
 
 	@db_error
-	def add_episode(self, show, episode_num, post_url):
+	def add_episode(self, show, episode_num, post_url, wp_post_url):
 		debug("Inserting episode {} for show {} ({})".format(episode_num, show.id, post_url))
-		self.q.execute("INSERT INTO Episodes (show, episode, post_url) VALUES (?, ?, ?)", (show.id, episode_num, post_url))
+		self.q.execute("INSERT INTO Episodes (show, episode, post_url, wp_post_url) VALUES (?, ?, ?, ?)", (show.id, episode_num, post_url, wp_post_url))
 		self.commit()
 
 	@db_error_default(list())
 	def get_episodes(self, show, ensure_sorted=True) -> List[Episode]:
 		episodes = list()
-		self.q.execute("SELECT episode, post_url FROM Episodes WHERE show = ?", (show.id,))
+		self.q.execute("SELECT episode, post_url, wp_post_url FROM Episodes WHERE show = ?", (show.id,))
 		for data in self.q.fetchall():
-			episodes.append(Episode(data[0], None, data[1], None))
+			episodes.append(Episode(data[0], None, data[1], data[2], None))
 
 		if ensure_sorted:
 			episodes = sorted(episodes, key=lambda e: e.number)

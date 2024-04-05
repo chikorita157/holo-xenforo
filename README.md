@@ -1,7 +1,9 @@
 ![Holo, of course.](holo.png)
 
 # Holo
-Anime episode discussion post bot for [Sakurajima Xenforo Forums](https://forums.sakurajima.moe/). Monitors online stream services for newly published episodes and creates a new thread for each for a specified forum via Xenforo API. This is a fork of the original Holo to work on Xenforo via its API.
+Anime episode discussion post bot for [Sakurajima Xenforo Forums](https://forums.sakurajima.moe/) and WordPress. Monitors online stream services for newly published episodes and creates a new thread for each for a specified forum via Xenforo and WordPress API. This is a fork of the original Holo to work on Xenforo and WordPress via its API.
+
+To use Holo with Xenforo only, use the xenforo branch
 
 Season configurations (show names and associated service URLs for each anime season) can be found in `season_configs`. Each can be loaded using the `edit` module.
 
@@ -31,15 +33,20 @@ Setup database|once|python holo.py -m setup
 
 ## Quick setup for development on an XenForo forums
 
-1. Update config file with your desired useragent, URL to your XenForo forums, and the API key generated from the Admin control panel.See the [XenForo Documentation](https://xenforo.com/docs/dev/rest-api/) on how to enable the API and generate an API key
+1. Update config file with your desired useragent, URL to your XenForo forums, and the API key generated from the Admin control panel.See the [XenForo Documentation](https://xenforo.com/docs/dev/rest-api/) on how to enable the API and generate an API key. For WordPress, add the URL to your WordPress site, the username, and App Password
 ```
 [connection]
 useragent = useragent_to_use
 
 [xenforo]
-forum=(
+forum=
 xenforo_url=
 xenforo_api_key=
+
+[wordpress]
+wordpress_url =
+wordpress_username =
+wordpress_app_password =
 ```
 
 2. Set up the database by running `python src/holo.py -m setup`
