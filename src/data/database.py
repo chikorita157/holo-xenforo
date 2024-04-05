@@ -606,7 +606,7 @@ class DatabaseDatabase:
 		return None
 
 	@db_error
-	def add_episode(self, show, episode_num, post_url, wp_post_url):
+	def add_episode(self, show, episode_num, post_url, wp_post_url=None):
 		debug("Inserting episode {} for show {} ({})".format(episode_num, show.id, post_url))
 		self.q.execute("INSERT INTO Episodes (show, episode, post_url, wp_post_url) VALUES (?, ?, ?, ?)", (show.id, episode_num, post_url, wp_post_url))
 		self.commit()
