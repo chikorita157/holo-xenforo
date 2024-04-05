@@ -17,7 +17,7 @@ def submit_text_post(title, body, tags):
 		newHeaders = {'Content-type': 'application/json'}
 		data = {
 			'title' : title,
-			'status': 'published',
+			'status': 'publish',
 			'content': body,
 		}
 		response = requests.post(_config.wordpress_url + '/wp-json/wp/v2/posts',
