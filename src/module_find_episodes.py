@@ -205,9 +205,9 @@ def _create_post_contents(config, db, show, stream, episode, wordpress=False, qu
 	if not quiet: info("Body:\n"+body)
 	if wordpress:
 		if show.name_en:
-			tags = [show.name,show_name_en]
+			tags = show.name + "," + "show_name_en
 		else:
-			tags = [show.name]
+			tags = show.name
 		return title, body, tags
 	return title, body
  

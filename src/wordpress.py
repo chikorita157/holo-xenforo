@@ -17,7 +17,7 @@ def submit_text_post(title, body, tags):
 		info("Submitting post to WordPress")
 		newHeaders = {'Content-type': 'application/json'}
 		response = requests.post(_config.wordpress_url + '/wp-json/wp/v2/posts',
- 		json=json.loads({'title': title, 'content' : body, 'tags' : tags, 'comment_status' : open, 'status' : 'publish'}),
+ 		json=json.dumps({'title': title, 'content' : body, 'tags' : tags.split(","), 'comment_status' : open, 'status' : 'publish'}),
  		headers=newHeaders, auth=(_config.wordpress_username, _config.wordpress_app_password))
 		print("Status code: ", response.status_code)
 		if response.status_code == 200:
@@ -38,7 +38,7 @@ def edit_text_post(postid, body):
 		print("Editing WordPress post: ", postid)
 		newHeaders = {'Content-type': 'application/json'}
 		response = requests.put(_config.wordpress_url + '/wp-json/wp/v2/posts/' + str(post_id) + '/',
- 		json=json.loads({'content' : body}),
+ 		data=json.dumps({'content' : body}),
  		headers=newHeaders, auth=(_config.wordpress_username, _config.wordpress_app_password))
 		print("Status code: ", response.status_code)
 		if response.status_code == 200:
