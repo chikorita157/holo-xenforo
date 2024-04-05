@@ -60,7 +60,7 @@ class Episode:
 		self.number = number
 		self.name = name		# Not stored in database
 		self.link = link
-        self.wp_post_link = wp_post_link
+		self.wp_post_link = wp_post_link
 		if isinstance(date, datetime):
 			self.date = date
 		elif date:

@@ -127,9 +127,9 @@ class DatabaseDatabase:
 			show		INTEGER NOT NULL,
 			episode		INTEGER NOT NULL,
 			post_url	TEXT,
-                        UNIQUE(show, episode) ON CONFLICT REPLACE,
-            wP_post_url TEXT,
-                        UNIQUE(show, episode) ON CONFLICT REPLACE,
+						UNIQUE(show, episode) ON CONFLICT REPLACE,
+			wP_post_url TEXT,
+						UNIQUE(show, episode) ON CONFLICT REPLACE,
 			FOREIGN KEY(show) REFERENCES Shows(id)
 		)""")
 
@@ -162,7 +162,7 @@ class DatabaseDatabase:
 			service		TEXT,
 			service_name	TEXT NOT NULL,
 			url		TEXT,
-                        UNIQUE(show, service) ON CONFLICT REPLACE,
+						UNIQUE(show, service) ON CONFLICT REPLACE,
 			FOREIGN KEY(show) REFERENCES Shows(id)
 		)""")
 
@@ -249,7 +249,7 @@ class DatabaseDatabase:
 			service, show_key = service_tuple
 			debug("Getting stream for {}/{}".format(service, show_key))
 			self.q.execute("SELECT id, service, show, show_id, show_key, name, remote_offset, display_offset, active FROM Streams WHERE service = ? AND show_key = ?",
-						   (service.id, show_key))
+   						(service.id, show_key))
 			stream = self.q.fetchone()
 			if stream is None:
 				error("Stream {} not found".format(id))
@@ -318,7 +318,7 @@ class DatabaseDatabase:
 
 		service = self.get_service(key=raw_stream.service_key)
 		self.q.execute("INSERT INTO Streams (service, show, show_id, show_key, name, remote_offset, display_offset, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-					   (service.id, show_id, raw_stream.show_id, raw_stream.show_key, raw_stream.name, raw_stream.remote_offset, raw_stream.display_offset, show_id is not None))
+   					(service.id, show_id, raw_stream.show_id, raw_stream.show_key, raw_stream.name, raw_stream.remote_offset, raw_stream.display_offset, show_id is not None))
 		if commit:
 			self.commit()
 
@@ -428,10 +428,10 @@ class DatabaseDatabase:
 		site = self.get_link_site(key=site_key)
 		if show is not None:
 			self.q.execute("SELECT count(*) FROM Links WHERE site = ? AND site_key = ? AND show = ?",
-					   (site.id, key, show))
+   					(site.id, key, show))
 		else:
 			self.q.execute("SELECT count(*) FROM Links WHERE site = ? AND site_key = ?",
-					   (site.id, key))
+   					(site.id, key))
 		return self.get_count() > 0
 
 	@db_error
@@ -445,7 +445,7 @@ class DatabaseDatabase:
 		site_key = raw_show.show_key
 
 		self.q.execute("INSERT INTO Links (show, site, site_key) VALUES (?, ?, ?)",
-					   (show_id, site.id, site_key))
+   					(show_id, site.id, site_key))
 		if commit:
 			self.commit()
 
@@ -461,10 +461,10 @@ class DatabaseDatabase:
 			self.q.execute(
 				"SELECT id, name, name_en, length, type, has_source, is_nsfw, enabled, delayed FROM Shows show\
 				WHERE (SELECT count(*) FROM Streams stream, Services service \
-				       WHERE stream.show = show.id \
-				       AND stream.active = 1 \
-				       AND stream.service = service.id \
-				       AND service.enabled = 1) = 0 \
+   					WHERE stream.show = show.id \
+   					AND stream.active = 1 \
+   					AND stream.service = service.id \
+   					AND service.enabled = 1) = 0 \
 				AND enabled = ?",
 				(enabled,))
 		elif delayed:
@@ -558,7 +558,7 @@ class DatabaseDatabase:
 		is_nsfw = raw_show.is_nsfw
 
 		if name_en:
-		    self.q.execute("UPDATE Shows SET name_en = ? WHERE id = ?", (name_en, show_id))
+			self.q.execute("UPDATE Shows SET name_en = ? WHERE id = ?", (name_en, show_id))
 		if length != 0:
 			self.q.execute("UPDATE Shows SET length = ? WHERE id = ?", (length, show_id))
 		self.q.execute("UPDATE Shows SET type = ?, has_source = ?, is_nsfw = ? WHERE id = ?", (show_type, has_source, is_nsfw, show_id))

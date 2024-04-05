@@ -21,9 +21,9 @@ def main(config, db, show_name, episode_count):
 		int_episode = Episode(i, None, None, None)
 		post_url = _create_xenforo_post(config, db, show, stream, int_episode, submit=not config.debug)
 		info("  Post URL: {}".format(post_url))
-                post_url = _create_xenforo_post(config, db, show, stream, int_episode, submit=not config.debug)
-        info("  WordPress Post URL: {}".format(wp_post_url))
-        
+		post_url = _create_xenforo_post(config, db, show, stream, int_episode, submit=not config.debug)
+		info("  WordPress Post URL: {}".format(wp_post_url))
+		
 		if post_url is not None:
 			db.add_episode(show, int_episode.number, post_url, wp_post_url)
 		else:
@@ -32,14 +32,14 @@ def main(config, db, show_name, episode_count):
 
 	for editing_episode in db.get_episodes(show):
 		_edit_xenforo_post(config, db, show, stream, editing_episode, editing_episode.link, submit=not config.debug)
-        _edit_wordpress_post(config, db, show, stream, editing_episode, editing_episode.link, submit=not config.debug)
+		_edit_wordpress_post(config, db, show, stream, editing_episode, editing_episode.link, submit=not config.debug)
 
 	megathread_title, megathread_body = _create_megathread_content(config, db, show, stream, episode_count)
 
 	if not config.debug:
 		megathread_post = xenforo.submit_text_post(config.forum, megathread_title, megathread_body)
 	else:
-                megathread_post = None
+		megathread_post = None
 		
 	if megathread_post is not None:
 		debug("Post successful")
