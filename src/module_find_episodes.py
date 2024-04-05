@@ -169,7 +169,7 @@ def _edit_xenforo_post(config, db, show, stream, episode, url, submit=True):
 def _create_wordpress_post(config, db, show, stream, episode, submit=True):
 	display_episode = stream.to_display_episode(episode)
 	
-	title, body, tags = _create_post_contents(config, db, show, stream, display_episode wordpress=True)
+	title, body, tags = _create_post_contents(config, db, show, stream, display_episode, wordpress=True)
 	if submit:
 		new_post = wordpress.submit_text_post(title, body, tags)
 		if new_post is not None:
