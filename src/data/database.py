@@ -126,9 +126,9 @@ class DatabaseDatabase:
 		self.q.execute("""CREATE TABLE IF NOT EXISTS Episodes (
 			show		INTEGER NOT NULL,
 			episode		INTEGER NOT NULL,
-			post_url	TEXT,
-						UNIQUE(show, episode) ON CONFLICT REPLACE,
 			wp_post_url	TEXT,
+						UNIQUE(show, episode) ON CONFLICT REPLACE,
+			post_url	TEXT,
 						UNIQUE(show, episode) ON CONFLICT REPLACE,
 			FOREIGN KEY(show) REFERENCES Shows(id)
 		)""")
