@@ -106,8 +106,8 @@ def from_file(file_path):
 		config.wordpress_post_body = sec.get("wordpress_body", None)
 		config.wordpress_batch_thread_post_body = sec.get("wordpress_batch_thread_body", None)
 		for key in sec:
-			if key.startswith("wordpress_format_") and len(key) > 10:
-				config.wordpress_post_formats[key[10:]] = sec[key]
+			if key.startswith("wordpress_format_") and len(key) > 17:
+				config.wordpress_post_formats[key[17:]] = sec[key]
 	
 	
 	# Services
