@@ -120,7 +120,7 @@ def _process_new_episode(config, db, show, stream, episode):
 			post_url = _create_xenforo_post(config, db, show, stream, int_episode, submit=not config.debug)
 			info("  Post URL: {}".format(post_url))
             wp_post_url = _create_wordpress_post(config, db, show, stream, int_episode, submit=not config.debug)
-            info("  Post URL: {}".format(post_url))
+            info("  Post URL: {}".format(wp_post_url))
 			if post_url is not None:
 				db.add_episode(stream.show, int_episode.number, post_url, wp_post_url)
 				if show.delayed:
@@ -169,9 +169,9 @@ def _edit_xenforo_post(config, db, show, stream, episode, url, submit=True):
 def _create_wordpress_post(config, db, show, stream, episode, submit=True):
     display_episode = stream.to_display_episode(episode)
     
-    title, body = _create_post_contents(config, db, show, stream, display_episode wordpress=True)
+    title, body, tags = _create_post_contents(config, db, show, stream, display_episode wordpress=True)
     if submit:
-        new_post = wordpress.submit_text_post(config.forum, title, body)
+        new_post = wordpress.submit_text_post(title, body, tags)
         if new_post is not None:
             debug("Post successful")
             return new_post
@@ -202,6 +202,12 @@ def _create_post_contents(config, db, show, stream, episode, wordpress=False, qu
 	info("Title:\n"+title)
 	body = _format_post_text(config, db, config.post_body, config.format, show, episode, stream, wordpress)
 	if not quiet: info("Body:\n"+body)
+    if wordpress:
+        if show.name_en:
+            tags = [show.name,show_name_en]
+        else:
+            tags = [show.name]
+        return title, body, tags
 	return title, body
  
 

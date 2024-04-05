@@ -20,15 +20,17 @@ def main(config, db, show_name, episode):
 	post_url = _create_xenforo_post(config, db, show, stream, int_episode, submit=not config.debug)
 	info("  Xenforo Post URL: {}".format(post_url))
  
-    wp_post_url = _create_xenforo_post(config, db, show, stream, int_episode, submit=not config.debug)
+    wp_post_url = _create_wordpress_post(config, db, show, stream, int_episode, submit=not config.debug)
     info("  WordPress Post URL: {}".format(post_url))
 	if post_url is not None:
 		post_url = post_url.replace("http:", "https:")
+        wp_post_url = post_url.replace("http:", "https:")
 		db.add_episode(show, int_episode.number, post_url)
 		if show.delayed:
 			db.set_show_delayed(show, False)
 		for editing_episode in db.get_episodes(show):
 			_edit_xenforo_post(config, db, show, stream, editing_episode, editing_episode.link, submit=not config.debug)
+            _edit_wordpress_post(config, db, show, stream, editing_episode, editing_episode.wp_post_link, submit=not config.debug)
 		return True
 	else:
 		error("  Episode not submitted")
