@@ -43,7 +43,7 @@ def edit_text_post(postid, body):
 		data = {
 			'content': body,
 		}
-		response = requests.put(_config.wordpress_url + '/wp-json/wp/v2/posts/' + str(post_id) + '/',
+		response = requests.put(_config.wordpress_url + '/wp-json/wp/v2/posts/' + str(postid) + '/',
  		json=data,
  		auth=(_config.wordpress_username, _config.wordpress_app_password))
 		print("Status code: ", response.status_code)
