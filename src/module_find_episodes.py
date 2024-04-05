@@ -195,6 +195,7 @@ def _create_post_contents(config, db, show, stream, episode, wordpress=False, qu
 	format = None
 	if wordpress:
 		format = config.wordpress_post_formats
+        info("format:\n"+format)
 	else:
 		format = config.post_formats
 	title = _create_post_title(config, show, episode)
