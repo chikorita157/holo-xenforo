@@ -128,10 +128,11 @@ class DatabaseDatabase:
 			episode		INTEGER NOT NULL,
 			post_url	TEXT,
 						UNIQUE(show, episode) ON CONFLICT REPLACE,
-			wp_post_url TEXT,
+			FOREIGN KEY(show) REFERENCES Shows(id),
+			wp_post_url	TEXT,
+						UNIQUE(show, episode) ON CONFLICT REPLACE,
 			FOREIGN KEY(show) REFERENCES Shows(id)
 		)""")
-
 		self.q.execute("""CREATE TABLE IF NOT EXISTS LinkSites (
 			id		INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 			key		TEXT NOT NULL UNIQUE,
