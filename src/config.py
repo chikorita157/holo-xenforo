@@ -103,7 +103,7 @@ def from_file(file_path):
 		config.wordpress_url = sec.get("wordpress_url", None)
 		config.wordpress_username = sec.get("wordpress_username", None)
 		config.wordpress_app_password = sec.get("wordpress_app_password", None)
-		config.wordpress_post_body = sec.get("wordpress_body", None)
+		config.wordpress_body = sec.get("wordpress_body", None)
 		config.wordpress_batch_thread_post_body = sec.get("wordpress_batch_thread_body", None)
 		for key in sec:
 			if key.startswith("wordpress_format_") and len(key) > 17:
