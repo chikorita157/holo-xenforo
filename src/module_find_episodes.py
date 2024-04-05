@@ -9,7 +9,7 @@ import wordpress
 
 def main(config, db, **kwargs):
 	xenforo.init_xenforo(config)
-	wordpress.init_xenforo(config)
+	wordpress.init_wordpress(config)
 	has_new_episode = []
 	
 	# Check services for new episodes
