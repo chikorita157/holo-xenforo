@@ -109,4 +109,4 @@ def _digest_episode(feed_episode):
     date_string = feed_episode.find("meta", itemprop="dateCreated")["content"]
     date = datetime.fromordinal(dateutil.parser.parse(date_string).toordinal())
 
-    return Episode(num, name, link, date)
+    return Episode(num, name, link, None, date)

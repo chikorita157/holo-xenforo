@@ -203,7 +203,7 @@ def _digest_episode(feed_episode):
 	date = feed_episode.published_parsed
 	debug("  date={}".format(date))
 	
-	return Episode(num, name, link, date)
+	return Episode(num, name, link, None, date)
 
 _slug_regex = re.compile("crunchyroll.com/([a-z0-9-]+)/", re.I)
 
