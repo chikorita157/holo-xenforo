@@ -99,7 +99,7 @@ def from_file(file_path):
 				config.post_formats[key[7:]] = sec[key]
 				
 	if "wordpress" in parsed:
-		sec = parsed["post"]
+		sec = parsed["wordpress"]
 		config.wordpress_url = sec.get("wordpress_url", None)
 		config.wordpress_username = sec.get("wordpress_username", None)
 		config.wordpress_app_password = sec.get("wordpress_app_password", None)
