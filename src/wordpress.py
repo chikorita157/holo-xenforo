@@ -47,7 +47,7 @@ def edit_text_post(postid, body):
  		json=data,
  		auth=(_config.wordpress_username, _config.wordpress_app_password))
 		print("Status code: ", response.status_code)
-		if response.status_code == 201:
+		if response.status_code == 200:
 			responsedata = response.json()
 			return _config.wordpress_url + '/?p=' + str(postid)
    
