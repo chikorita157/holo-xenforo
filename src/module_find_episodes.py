@@ -185,7 +185,7 @@ def _edit_wordpress_post(config, db, show, stream, episode, url, submit=True):
 	_, body, tags = _create_post_contents(config, db, show, stream, display_episode, wordpress=True, quiet=True)
 	if submit:
 		print("Response: ",url)
-		tmpid = url.replace(config.wordpress_url + '?p=', "")
+		tmpid = url.replace(config.wordpress_url + '/?p=', "")
 		postid = literal_eval(tmpid)
 		wordpress.edit_text_post(postid, body)
 	return None
