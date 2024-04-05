@@ -55,6 +55,16 @@ class Show(DbEqMixin):
 		return "Show: {} (id={}, type={}, len={})".format(self.name, self.id, self.type, self.length)
 
 class Episode:
+	def __init__(self, number, name, link, date):
+		# Note: arguments are order-sensitive
+		self.number = number
+		self.name = name		# Not stored in database
+		self.link = link
+		self.wp_post_link = None
+		if isinstance(date, datetime):
+			self.date = date
+		elif date:
+			self.date = datetime(*date[:6])
 	def __init__(self, number, name, link, wp_post_link, date):
 		# Note: arguments are order-sensitive
 		self.number = number
