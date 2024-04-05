@@ -193,15 +193,18 @@ def _edit_wordpress_post(config, db, show, stream, episode, url, submit=True):
 
 def _create_post_contents(config, db, show, stream, episode, wordpress=False, quiet=False):
 	format = None
+	bodyformat = None
 	if wordpress:
 		format = config.wordpress_post_formats
+		bodyformat = config.wordpress_body
 		info(format)
 	else:
 		format = config.post_formats
+		bodyformat = config.post_body
 	title = _create_post_title(config, show, episode)
 	title = _format_post_text(config, db, title, format, show, episode, stream, wordpress)
 	info("Title:\n"+title)
-	body = _format_post_text(config, db, config.post_body, format, show, episode, stream, wordpress)
+	body = _format_post_text(config, db, bodyformat, format, show, episode, stream, wordpress)
 	if not quiet: info("Body:\n"+body)
 	if wordpress:
 		if show.name_en:
