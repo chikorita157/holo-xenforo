@@ -201,7 +201,8 @@ def _create_post_contents(config, db, show, stream, episode, wordpress=False, qu
 	else:
 		format = config.post_formats
 		bodyformat = config.post_body
-	title = _create_post_title(config, show, episode)
+	if not wordpress:
+		title = _create_post_title(config, show, episode)
 	title = _format_post_text(config, db, title, format, show, episode, stream, wordpress)
 	info("Title:\n"+title)
 	body = _format_post_text(config, db, bodyformat, format, show, episode, stream, wordpress)
