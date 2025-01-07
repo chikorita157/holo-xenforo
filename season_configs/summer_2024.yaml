@@ -8,7 +8,7 @@ info:
     anidb: ''
     kitsu: ''
     animeplanet: 'http://www.anime-planet.com/anime/head-start-at-birth'
-    official: ''
+    official: 'https://www.shusuisha.com/lp/info0saiji'
     subreddit: ''
 streams:
     crunchyroll: ''
@@ -34,14 +34,14 @@ info:
     kitsu: 'https://kitsu.io/anime/46842'
     animeplanet: 'http://www.anime-planet.com/anime/25-dimensional-seduction'
     official: 'https://ririsa-official.com/'
-    subreddit: ''
+    subreddit: '/r/25DimensionalSeduct'
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/25-dimensional-seduction'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
     wakanim|Wakanim: ''
-    hidive: ''
+    hidive: 'https://www.hidive.com/season/24579'
     animelab|AnimeLab: ''
     vrv|VRV: ''
     hulu|Hulu: ''
@@ -59,9 +59,9 @@ info:
     kitsu: 'https://kitsu.io/anime/46525'
     animeplanet: 'http://www.anime-planet.com/anime/atri-my-dear-moments'
     official: 'https://atri-anime.com/'
-    subreddit: ''
+    subreddit: '/r/ATRImydearmoments'
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/atri-my-dear-moments-'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -111,7 +111,7 @@ info:
     official: 'https://bye2earth.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/bye-bye-earth'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -191,6 +191,31 @@ streams:
     anione: ''
     funimation|Funimation: ''
     wakanim|Wakanim: ''
+    hidive: 'https://www.hidive.com/season/24581'
+    animelab|AnimeLab: ''
+    vrv|VRV: ''
+    hulu|Hulu: ''
+    disney|Disney: ''
+    youtube: ''
+    nyaa: ''
+---
+title: 'Egumi Legacy'
+title_en: ""
+has_source: false
+info:
+    mal: 'https://myanimelist.net/anime/58926'
+    anilist: 'https://anilist.co/anime/177097'
+    anidb: 'http://anidb.net/a18747'
+    kitsu: ''
+    animeplanet: 'http://www.anime-planet.com/anime/egumi-legacy'
+    official: 'https://egumilegacy.com/'
+    subreddit: ''
+streams:
+    crunchyroll: ''
+    museasia: ''
+    anione: ''
+    funimation|Funimation: ''
+    wakanim|Wakanim: ''
     hidive: ''
     animelab|AnimeLab: ''
     vrv|VRV: ''
@@ -216,7 +241,7 @@ streams:
     anione: ''
     funimation|Funimation: ''
     wakanim|Wakanim: ''
-    hidive: ''
+    hidive: 'https://www.hidive.com/season/24582'
     animelab|AnimeLab: ''
     vrv|VRV: ''
     hulu|Hulu: ''
@@ -224,7 +249,7 @@ streams:
     youtube: ''
     nyaa: ''
 ---
-title: 'Fair Tail: 100 Years Quest'
+title: 'Fairy Tail: 100 Years Quest'
 title_en: ""
 has_source: true
 info:
@@ -236,7 +261,7 @@ info:
     official: 'https://www.fairytail100yq.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/fairy-tail-100-years-quest'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -261,7 +286,7 @@ info:
     official: 'https://gijiharem.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/pseudo-harem'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -284,7 +309,7 @@ info:
     kitsu: 'https://kitsu.io/anime/46276'
     animeplanet: 'http://www.anime-planet.com/anime/gimai-seikatsu'
     official: 'https://gimaiseikatsu-anime.com/'
-    subreddit: ''
+    subreddit: '/r/GimaiSeikatsu'
 streams:
     crunchyroll: 'https://www.crunchyroll.com/days-with-my-stepsister'
     museasia: ''
@@ -336,7 +361,7 @@ info:
     official: 'https://hazurewaku-anime.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/failure-frame-i-became-the-strongest-and-annihilated-everything-with-low-level-spells'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -361,7 +386,7 @@ info:
     official: 'https://isekaishikkaku.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/no-longer-allowed-in-another-world'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -386,7 +411,7 @@ info:
     official: 'https://isekai-yururi-anime.jp/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/a-journey-through-another-world-raising-kids-while-adventuring'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -411,7 +436,7 @@ info:
     official: 'https://tog-anime.com/'
     subreddit: ''
 streams:
-    crunchyroll: 'https://www.crunchyroll.com/tower-of-god#13'
+    crunchyroll: 'https://www.crunchyroll.com/tower-of-god'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -436,7 +461,7 @@ info:
     official: 'https://mahoaku-anime.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/the-magical-girl-and-the-evil-lieutenant-used-to-be-archenemies'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -461,7 +486,7 @@ info:
     official: 'https://kimisentv.com/'
     subreddit: ''
 streams:
-    crunchyroll: 'https://www.crunchyroll.com/our-last-crusade-or-the-rise-of-a-new-world#12'
+    crunchyroll: 'https://www.crunchyroll.com/our-last-crusade-or-the-rise-of-a-new-world|12'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -503,10 +528,10 @@ title: 'Kinnikuman: Perfect Origin-hen Episode 0'
 title_en: "Kinnikuman: Perfect Origin Arc Episode 0"
 has_source: true
 info:
-    mal: ''
+    mal: 'https://myanimelist.net/anime/59162'
     anilist: ''
     anidb: ''
-    kitsu: ''
+    kitsu: 'https://kitsu.io/anime/49022'
     animeplanet: ''
     official: 'https://kin29man-anime.com/'
     subreddit: ''
@@ -561,7 +586,7 @@ info:
     official: 'https://konofuka.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/quality-assurance-in-another-world'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -636,7 +661,7 @@ info:
     official: 'https://dahliya-anime.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/dahlia-in-bloom-crafting-a-fresh-start-with-magical-tools'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -661,7 +686,7 @@ info:
     official: 'https://makeine-anime.com/'
     subreddit: '/r/TooManyLosingHeroines'
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/makeine-too-many-losing-heroines'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -676,6 +701,7 @@ streams:
 ---
 title: 'Maougun Saikyou no Majutsushi wa Ningen datta'
 title_en: "The Strongest Magician in the Demon Lord's Army was a Human"
+alias: ['Maou Gun Saikyou no Majutsushi wa Ningen datta']
 has_source: true
 info:
     mal: 'https://myanimelist.net/anime/57876'
@@ -711,7 +737,7 @@ info:
     official: 'https://goddess-cafe.com/'
     subreddit: ''
 streams:
-    crunchyroll: 'https://www.crunchyroll.com/the-caf-terrace-and-its-goddesses#12'
+    crunchyroll: 'https://www.crunchyroll.com/the-caf-terrace-and-its-goddesses|12'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -761,7 +787,7 @@ info:
     official: 'https://mobkara.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/a-nobodys-way-up-to-an-exploration-hero'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -786,7 +812,7 @@ info:
     official: 'https://www.nazeboku.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/why-does-nobody-remember-me-in-this-world'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -811,7 +837,7 @@ info:
     official: 'https://nierautomata-anime.com/'
     subreddit: ''
 streams:
-    crunchyroll: 'https://www.crunchyroll.com/nierautomata-ver11a#12'
+    crunchyroll: 'https://www.crunchyroll.com/nierautomata-ver11a|12'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -836,7 +862,7 @@ info:
     official: 'https://nigewaka.run/'
     subreddit: '/r/TheElusiveSamurai'
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/the-elusive-samurai'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -866,7 +892,7 @@ streams:
     anione: ''
     funimation|Funimation: ''
     wakanim|Wakanim: ''
-    hidive: ''
+    hidive: 'https://www.hidive.com/season/24576'
     animelab|AnimeLab: ''
     vrv|VRV: ''
     hulu|Hulu: ''
@@ -886,7 +912,7 @@ info:
     official: 'https://ramenakaneko.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/ramen-akaneko'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -904,7 +930,7 @@ title_en: ""
 has_source: true
 info:
     mal: ''
-    anilist: ''
+    anilist: 'https://anilist.co/anime/150103'
     anidb: 'http://anidb.net/a17422'
     kitsu: ''
     animeplanet: ''
@@ -936,7 +962,7 @@ info:
     official: 'https://shy-anime.com/'
     subreddit: ''
 streams:
-    crunchyroll: 'https://www.crunchyroll.com/shy#12'
+    crunchyroll: 'https://www.crunchyroll.com/shy|12'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -961,7 +987,7 @@ info:
     official: 'https://sengoku-youko.com/'
     subreddit: ''
 streams:
-    crunchyroll: 'https://www.crunchyroll.com/sengoku-youko#13'
+    crunchyroll: 'https://www.crunchyroll.com/sengoku-youko|13'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -1011,7 +1037,7 @@ info:
     official: 'https://www.anime-shikanoko.jp/'
     subreddit: '/r/Nokotan'
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/my-deer-friend-nokotan'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -1036,7 +1062,7 @@ info:
     official: 'https://shinmaiossan-anime.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/the-ossan-newbie-adventurer-trained-to-death-by-the-most-powerful-party-became-invincible'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -1059,9 +1085,9 @@ info:
     kitsu: 'https://kitsu.io/anime/48415'
     animeplanet: 'http://www.anime-planet.com/anime/shoushimin-series'
     official: 'https://shoshimin-anime.com/'
-    subreddit: ''
+    subreddit: '/r/Shoushimin'
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/shoshimin-how-to-become-ordinary'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -1110,7 +1136,7 @@ info:
     official: 'https://tasogare-anime.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/twilight-out-of-focus'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -1131,11 +1157,11 @@ info:
     anilist: 'https://anilist.co/anime/174070'
     anidb: 'http://anidb.net/a18453'
     kitsu: 'https://kitsu.io/anime/48466'
-    animeplanet: ''
+    animeplanet: 'http://www.anime-planet.com/anime/tasuketsu-fate-of-the-majority'
     official: 'https://www.vap.co.jp/tasuketsu_anime/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/tasuketsu-fate-of-the-majority-'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -1160,7 +1186,7 @@ info:
     official: 'https://sakuna-anime.com/'
     subreddit: ''
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/sakuna-of-rice-and-ruin'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -1185,7 +1211,7 @@ info:
     official: 'https://roshidere.com/'
     subreddit: '/r/TokidokiBosottoRoshia'
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/alya-sometimes-hides-her-feelings-in-russian'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -1210,7 +1236,7 @@ info:
     official: 'https://wistoria-anime.com/'
     subreddit: '/r/Wistoria'
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/wistoria-wand-and-sword'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -1261,7 +1287,7 @@ info:
     official: 'https://narenare-anime.com/'
     subreddit: '/r/NanareHananare'
 streams:
-    crunchyroll: ''
+    crunchyroll: 'https://www.crunchyroll.com/narenare-cheer-for-you-'
     museasia: ''
     anione: ''
     funimation|Funimation: ''
@@ -1291,7 +1317,7 @@ streams:
     anione: ''
     funimation|Funimation: ''
     wakanim|Wakanim: ''
-    hidive: ''
+    hidive: 'https://www.hidive.com/season/24567'
     animelab|AnimeLab: ''
     vrv|VRV: ''
     hulu|Hulu: ''
@@ -1311,6 +1337,31 @@ info:
     official: 'https://www.monogatari-series.com/oms/'
     subreddit: '/r/araragi'
 streams:
+    crunchyroll: 'https://www.crunchyroll.com/monogatari-series-off-monster-season'
+    museasia: ''
+    anione: ''
+    funimation|Funimation: ''
+    wakanim|Wakanim: ''
+    hidive: ''
+    animelab|AnimeLab: ''
+    vrv|VRV: ''
+    hulu|Hulu: ''
+    disney|Disney: ''
+    youtube: ''
+    nyaa: ''
+---
+title: 'Kengan Ashura Season 2 Part 2'
+title_en: ""
+has_source: true
+info:
+    mal: 'https://myanimelist.net/anime/56704'
+    anilist: 'https://anilist.co/anime/169692'
+    anidb: 'http://anidb.net/17274'
+    kitsu: 'https://kitsu.app/anime/kengan-ashura-season-2-part-2'
+    animeplanet: ''
+    official: 'https://kengan.net/'
+    subreddit: '/r/Kengan_Ashura'
+streams:
     crunchyroll: ''
     museasia: ''
     anione: ''
@@ -1321,5 +1372,61 @@ streams:
     vrv|VRV: ''
     hulu|Hulu: ''
     disney|Disney: ''
+    netflix|Netflix: 'https://www.netflix.com/title/80992228'
+    youtube: ''
+    nyaa: ''
+---
+title: 'Rick and Morty: The Anime'
+title_en: ""
+alias: ['Rick and Morty The Anime', 'Rick and Morty - The Anime']
+has_source: true
+info:
+    mal: 'https://myanimelist.net/anime/56057'
+    anilist: 'https://anilist.co/anime/150103'
+    anidb: 'http://anidb.net/17422'
+    kitsu: 'https://kitsu.io/anime/rick-and-morty-the-anime'
+    animeplanet: 'https://www.anime-planet.com/anime/rick-and-morty-the-anime'
+    official: ''
+    subreddit: '/r/rickandmorty'
+streams:
+    crunchyroll: ''
+    museasia: ''
+    anione: ''
+    funimation|Funimation: ''
+    wakanim|Wakanim: ''
+    hidive: ''
+    animelab|AnimeLab: ''
+    vrv|VRV: ''
+    hulu|Hulu: ''
+    disney|Disney: ''
+    netflix|Netflix: ''
+    max|Max: 'https://play.max.com/show/6ace005a-41eb-4e44-bf13-abdfaa9e5143'
+    youtube: ''
+    nyaa: ''
+---
+title: 'Terminator Zero'
+alias: ['Terminator 0']
+title_en: ""
+has_source: true
+info:
+    mal: 'https://myanimelist.net/anime/59390/Terminator_0'
+    anilist: 'https://anilist.co/anime/177814/Terminator-0'
+    anidb: 'https://anidb.net/anime/18275'
+    kitsu: 'https://kitsu.app/anime/terminator-zero/'
+    animeplanet: ''
+    official: ''
+    subreddit: '/r/Terminator'
+streams:
+    crunchyroll: ''
+    museasia: ''
+    anione: ''
+    funimation|Funimation: ''
+    wakanim|Wakanim: ''
+    hidive: ''
+    animelab|AnimeLab: ''
+    vrv|VRV: ''
+    hulu|Hulu: ''
+    disney|Disney: ''
+    netflix|Netflix: 'https://www.netflix.com/title/81217220'
     youtube: ''
     nyaa: ''

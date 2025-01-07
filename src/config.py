@@ -17,6 +17,9 @@ class Config:
 		self.xenforo_url = None
 		self.xenforo_api_key = None
 		
+		self.d_token = None
+		self.d_guild = None
+
 		self.services = dict()
 		
 		self.new_show_types = list()
@@ -64,6 +67,11 @@ def from_file(file_path):
 		config.forum = sec.get("forum", None)
 		config.xenforo_url = sec.get("xenforo_url", None)
 		config.xenforo_api_key = sec.get("xenforo_api_key", None)
+
+	if "discord" in parsed:
+		sec = parsed["discord"]
+		config.d_token = sec.get("token", None)
+		config.d_guild = sec.get("guild", None)
 	
 	if "options" in parsed:
 		sec = parsed["options"]
