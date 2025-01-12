@@ -129,7 +129,7 @@ class DatabaseDatabase:
 			show		INTEGER NOT NULL,
 			episode		INTEGER NOT NULL,
 			post_url	TEXT,
-                        UNIQUE(show, episode) ON CONFLICT REPLACE,
+						UNIQUE(show, episode) ON CONFLICT REPLACE,
 			FOREIGN KEY(show) REFERENCES Shows(id)
 		)""")
 
@@ -162,7 +162,7 @@ class DatabaseDatabase:
 			service		TEXT,
 			service_name	TEXT NOT NULL,
 			url		TEXT,
-                        UNIQUE(show, service) ON CONFLICT REPLACE,
+						UNIQUE(show, service) ON CONFLICT REPLACE,
 			FOREIGN KEY(show) REFERENCES Shows(id)
 		)""")
 
@@ -185,10 +185,10 @@ class DatabaseDatabase:
 
 		# The two inserts take minimal time < 0.005 when we have 1300 shows, so running them on setup is fine.
 		self.q.executescript("""CREATE VIRTUAL TABLE IF NOT EXISTS FuzzySearch;
-		                        INSERT INTO FuzzySearch (word) SELECT name FROM Shows
-		                            WHERE name NOT IN (SELECT word FROM FuzzySearch);
-		                        INSERT INTO FuzzySearch (word) SELECT name_en FROM Shows
-		                            WHERE name_en NOT NULL AND name_en NOT IN (SELECT word FROM FuzzySearch);
+								INSERT INTO FuzzySearch (word) SELECT name FROM Shows
+									WHERE name NOT IN (SELECT word FROM FuzzySearch);
+								INSERT INTO FuzzySearch (word) SELECT name_en FROM Shows
+									WHERE name_en NOT NULL AND name_en NOT IN (SELECT word FROM FuzzySearch);
 							 """)
 
 		self.commit()
@@ -469,10 +469,10 @@ class DatabaseDatabase:
 			self.q.execute(
 				"SELECT id, name, name_en, length, type, has_source, is_nsfw, enabled, delayed FROM Shows show\
 				WHERE (SELECT count(*) FROM Streams stream, Services service \
-				       WHERE stream.show = show.id \
-				       AND stream.active = 1 \
-				       AND stream.service = service.id \
-				       AND service.enabled = 1) = 0 \
+					   WHERE stream.show = show.id \
+					   AND stream.active = 1 \
+					   AND stream.service = service.id \
+					   AND service.enabled = 1) = 0 \
 				AND enabled = ?",
 				(enabled,))
 		elif delayed:
